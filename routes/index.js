@@ -5,7 +5,7 @@ var nodemailer = require('nodemailer');
 
 /* GET home page. */
 router.get('/', function (req, res, next)
-{ res.render('index', { title: 'Home' }); });
+{ res.render('index', { style: 'Main', title: 'Home - Ada ChatBot' }); });
 
 router.post('/', function (req, res, next)
 {

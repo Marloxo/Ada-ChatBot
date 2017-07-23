@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <title><%= title %></title>
+  <% include head.ejs%>
+
+    <% include head-stylesheet.ejs%>
+</head>
+
+<body>
+<%if (style == 'Main') { %>
+ <% include header.ejs%>
+<% } %>    
+
+  <%- body %>
+
+<% include footer.ejs%>
+
+<% include footer-script.ejs%>
+</body>
+</html>
