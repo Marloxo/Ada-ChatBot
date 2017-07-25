@@ -1,4 +1,4 @@
-<% layout('template/layout') -%>
+<% layout('Shared/layout') -%>
 
   <div class="perspective effect-rotate-left">
     <div class="container">
@@ -232,23 +232,23 @@
                   </div>
                   <div class="work-request--information">
                     <div class="information-name">
-                      <input id="name" name="name" type="text" spellcheck="false">
+                      <input id="name" name="name" type="text" spellcheck="false" required="required">
                       <label for="name">Name</label>
                     </div>
                     <div class="information-email">
-                      <input id="email" name="email" type="email" spellcheck="false">
+                      <input id="email" name="email" type="email" spellcheck="false" required="required" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
                       <label for="email">Email</label>
                     </div>
                   </div>
 
                   <div class="work-request--information">
                     <div class="information-email">
-                      <input id="message" name="message" type="text" spellcheck="true">
+                      <input id="message" name="message" type="text" spellcheck="true" required="required">
                       <label for="message">Subject</label>
                     </div>
                   </div>
 
-                  <input type="submit" value="Send Request">
+                  <input type="submit" value="Send Message">
                 </form>
               </div>
             </li>
