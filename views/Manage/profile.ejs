@@ -1,0 +1,164 @@
+<% layout('../Shared/layout') -%>
+
+<!--Top nav -->
+<nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
+	<button class="navbar-toggler navbar-toggler-right hidden-lg-up" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+	 aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+	<a class="navbar-brand" href="/dashboard">Dashboard</a>
+
+	<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+		<ul class="navbar-nav mr-auto">
+			<li class="nav-item active">
+				<a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="/dashboard/settings">Settings</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="/dashboard/profile">Profile</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="#">Help</a>
+			</li>
+		</ul>
+		<form class="form-inline mt-2 mt-md-0">
+			<input class="form-control mr-sm-2" type="text" placeholder="Search">
+			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+		</form>
+	</div>
+</nav>
+
+<div class="container-fluid">
+	<div class="row">
+		<nav class="col-sm-3 col-md-2 hidden-xs-down bg-faded sidebar">
+			<ul class="nav nav-pills flex-column">
+				<li class="nav-item">
+					<a class="nav-link active" href="#">Overview <span class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">Reports</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">Analytics</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">Export</a>
+				</li>
+			</ul>
+
+			<ul class="nav nav-pills flex-column">
+				<li class="nav-item">
+					<a class="nav-link" href="#">Nav item</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">Nav item again</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">One more nav</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">Another nav item</a>
+				</li>
+			</ul>
+
+			<ul class="nav nav-pills flex-column">
+				<li class="nav-item">
+					<a class="nav-link" href="#">Nav item again</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">One more nav</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">Another nav item</a>
+				</li>
+			</ul>
+		</nav>
+
+		<main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
+			<h1>Profile</h1>
+			<ul>
+			<% if ( typeof errors != "undefined" ) { %>
+			 <% errors.forEach(function(error) { %>
+			   <li class="alert-danger"><%= error.msg %> </li>
+			  <% }); %>
+			<% } %>
+			</ul>
+			<div class="row" id="main">
+				<div class="col-md-4 well" id="leftPanel">
+					<div class="row">
+						<div class="col-md-12">
+							
+								<img src="http://lorempixel.com/200/200/abstract/1/" alt="Texto Alternativo" class="img-circle img-thumbnail">
+								<p></p>
+								<h3>Gopinath Perumal</h3>
+								<p></p>
+         <form method="post" action="/dashboard/profile" enctype="multipart/form-data">
+								<input id="attachement" type="file" name="profileImage" style="display: none;" onchange="fileSelected(this)" />
+								<input id="btnAttachment" type="button" class="btn btn-info" onclick="openAttachment()" value="Update Image"></input>
+							
+						</div>
+					</div>
+				</div>
+				<div class="col-md-8 well" id="rightPanel">
+					<div class="row">
+						<div class="col-md-12">
+							<!-- Form -->
+								<h2>Edit your profile.<small>It's always easy</small></h2>
+								<hr class="colorgraph">
+								<div class="row">
+									<div class="col-xs-12 col-sm-6 col-md-6">
+										<div class="form-group">
+											<input type="text" name="first_name" id="first_name" class="form-control input-lg" placeholder="First Name" tabindex="1">
+										</div>
+									</div>
+									<div class="col-xs-12 col-sm-6 col-md-6">
+										<div class="form-group">
+											<input type="text" name="last_name" id="last_name" class="form-control input-lg" placeholder="Last Name" tabindex="2">
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<input type="email" name="email" id="email" class="form-control input-lg" placeholder="Email Address" tabindex="4">
+								</div>
+								<div class="row">
+									<div class="col-xs-12 col-sm-6 col-md-6">
+										<div class="form-group">
+											<input type="password" name="password" id="password" class="form-control input-lg" placeholder="Password" tabindex="5">
+										</div>
+									</div>
+									<div class="col-xs-12 col-sm-6 col-md-6">
+										<div class="form-group">
+											<input type="password" name="password_confirmation" id="password_confirmation" class="form-control input-lg" placeholder="Confirm Password"
+											 tabindex="6">
+										</div>
+									</div>
+								</div>
+								<hr class="colorgraph">
+								<div class="row">
+									<div class="col-xs-12 col-md-6"></div>
+									<div class="col-xs-12 col-md-6">
+										<button type="submit" class="btn btn-success btn-block btn-lg">Save</button>
+									</div>
+								</div>
+			</form>
+						</div>
+					</div>
+				</div>
+			</div>
+	    </main>
+    </div>
+</div>
+
+<script>
+	function openAttachment()
+	{
+		document.getElementById('attachement').click();
+	}
+
+	function fileSelected(input)	
+	{
+		//document.getElementById('btnAttachment').value = input.files[0].name
+	}
+</script>

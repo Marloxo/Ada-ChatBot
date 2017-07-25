@@ -13,7 +13,7 @@ var expressValidator = require('express-validator');
 var passport = require('passport'); //User Auth Helper
 var LocalStrategy = require('passport-local').Strategy;
 var bodyParser = require('body-parser');
-var multer = require('multer'); //file upload
+//var multer = require('multer'); //file upload
 var flash = require('connect-flash'); //Send flash message over session
 var mongo = require('mongodb');
 var MongoClient = require('mongodb').MongoClient;
@@ -57,7 +57,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //Handle File Uploads
 //app.use(multer({ dest: './uploads' }));
-//var upload = multer({ dest: './uploads' });
+//global.upload = multer({ dest: './uploads' });
 
 //Handle Express Sessions
 app.use(session({
