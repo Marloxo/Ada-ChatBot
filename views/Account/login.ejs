@@ -9,15 +9,24 @@
 
 <!-- main -->
 <div class="main-agile">
-	<div id="w3ls_form" class="signin-form">
+	<div id="w3ls_form" class="signin-form <%=(typeof signupErrors != 'undefined')? 'flipped' :'' %>">
 		<!-- Sign In Form -->
-		<form id="signin" action="/login/signin" method="post">
+		<form id="signin" action="/login/signin" method="post" style="display: table;">
 			<div class="ribbon"><a href="#" id="flipToRecover" class="flipLink" title="Click Here to SignUp">Sign Up</a></div>
 			<h2>Sign In Form</h2>
+			<ul>
+				<% if ( typeof loginErrors != "undefined" ) { %>
+					<% loginErrors.forEach(function(error) { %>
+					<li class="alert-warning" style="color:red;">
+						<%= error.msg %>
+					</li>
+					<% }); %>
+				<% } %>
+			</ul>
 			<p>User Name </p>
-			<input type="text" name="UserName" placeholder="" required="" />
+			<input type="text" name="UserName" placeholder="" />
 			<p>Password</p>
-			<input type="password" name="Password" placeholder="" required="" />
+			<input type="password" name="Password" placeholder="" />
 			<input type="checkbox" id="brand" value="">
 			<label for="brand"><span></span> Remember me ?</label>
 			<input type="submit" value="SIGN IN">
@@ -34,15 +43,24 @@
 		</form>
 		<!-- //Sign In Form -->
 		<!-- Sign up Form-->
-		<form id="signup" action="/login/signup" method="post">
+		<form method="post" id="signup" action="/login/signup" style="display: table;">
 			<div class="ribbon"><a href="#" id="flipToRecover1" class="flipLink" title="Click Here to signin">Sign In</a></div>
 			<h3>Sign Up Form</h3>
+			<ul>
+				<% if ( typeof signupErrors != "undefined" ) { %>
+					<% signupErrors.forEach(function(error) { %>
+					<li class="alert-warning" style="color:red;">
+						<%= error.msg %>
+					</li>
+					<% }); %>
+				<% } %>
+			</ul>
 			<p>User Name </p>
-			<input type="text" name="UserName" placeholder="" required="" />
+			<input type="text" name="UserName" placeholder="" />
 			<p>Your Email </p>
-			<input type="text" name="Email" placeholder="" required="" />
+			<input type="text" name="Email" placeholder="" />
 			<p>Password</p>
-			<input type="password" name="Password" placeholder="" required="" />
+			<input type="password" name="Password" placeholder="" />
 			<input type="checkbox" id="brand1" value="">
 			<label for="brand1"><span></span>I accept the terms of use</label>
 			<input type="submit" value="SIGN UP">

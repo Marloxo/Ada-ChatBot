@@ -66,19 +66,6 @@ typings/
 !.vscode/launch.json
 !.vscode/extensions.json
 
-### Web ###
-*.asp
-*.cer
-*.csr
-*.css
-*.htm
-*.html
-*.js
-*.jsp
-*.php
-*.rss
-*.xhtml
-
 ### Windows ###
 # Windows thumbnail cache files
 Thumbs.db
