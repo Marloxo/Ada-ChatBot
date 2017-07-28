@@ -16,19 +16,12 @@ var bodyParser = require('body-parser');
 //var multer = require('multer'); //file upload
 var flash = require('connect-flash'); //Send flash message over session
 var mongo = require('mongodb');
-var MongoClient = require('mongodb').MongoClient;
-var mongoose = require('mongoose'); //Handle connect with mongodb
-var db = mongoose.connection;
+//var MongoClient = require('mongodb').MongoClient;
+//var mongoose = require('mongoose'); //Handle connect with mongodb
+//var db = mongoose.connection;
 
-var uri = 'mongodb://Iglesk:omar.1994@cluster0-shard-00-00-kt6rw.mongodb.net:27017,cluster0-shard-00-01-kt6rw.mongodb.net:27017,cluster0-shard-00-02-kt6rw.mongodb.net:27017/admin?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin';
-MongoClient.connect(uri, function (err, db)
-{
-	if (err)
-	{
-		console.log(err);
-	}
-	db.close();
-});
+var uri = 'mongodb://Iglesk:omar.1994@cluster0-shard-00-00-kt6rw.mongodb.net:27017,cluster0-shard-00-01-kt6rw.mongodb.net:27017,cluster0-shard-00-02-kt6rw.mongodb.net:27017/AdaDB?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin';
+exports.dbUri = uri;
 
 //Routes
 var index = require('./routes/index');
@@ -98,7 +91,6 @@ app.use(function (req, res, next)
 	res.locals.messages = require('express-messages')(req, res);
 	next();
 });
-
 
 //Route define
 app.use('/', index);

@@ -11,22 +11,20 @@
 <div class="main-agile">
 	<div id="w3ls_form" class="signin-form <%=(typeof signupErrors != 'undefined')? 'flipped' :'' %>">
 		<!-- Sign In Form -->
-		<form id="signin" action="/login/signin" method="post" style="display: table;">
+		<form id="signin" action="/login/signin" method="post">
 			<div class="ribbon"><a href="#" id="flipToRecover" class="flipLink" title="Click Here to SignUp">Sign Up</a></div>
 			<h2>Sign In Form</h2>
 			<ul>
-				<% if ( typeof loginErrors != "undefined" ) { %>
-					<% loginErrors.forEach(function(error) { %>
+				<% if ( typeof infoMessage != "undefined" ) { %>
 					<li class="alert-warning" style="color:red;">
-						<%= error.msg %>
+						<%= infoMessage.message %>
 					</li>
-					<% }); %>
 				<% } %>
 			</ul>
-			<p>User Name </p>
-			<input type="text" name="UserName" placeholder="" />
+			<p>Email</p>
+			<input type="text" name="email" placeholder="" />
 			<p>Password</p>
-			<input type="password" name="Password" placeholder="" />
+			<input type="password" name="password" placeholder="" />
 			<input type="checkbox" id="brand" value="">
 			<label for="brand"><span></span> Remember me ?</label>
 			<input type="submit" value="SIGN IN">
@@ -43,7 +41,7 @@
 		</form>
 		<!-- //Sign In Form -->
 		<!-- Sign up Form-->
-		<form method="post" id="signup" action="/login/signup" style="display: table;">
+		<form method="post" id="signup" action="/login/signup">
 			<div class="ribbon"><a href="#" id="flipToRecover1" class="flipLink" title="Click Here to signin">Sign In</a></div>
 			<h3>Sign Up Form</h3>
 			<ul>
@@ -55,8 +53,8 @@
 					<% }); %>
 				<% } %>
 			</ul>
-			<p>User Name </p>
-			<input type="text" name="UserName" placeholder="" />
+			<p>Full Name </p>
+			<input type="text" name="FullName" placeholder="" />
 			<p>Your Email </p>
 			<input type="text" name="Email" placeholder="" />
 			<p>Password</p>

@@ -81,10 +81,12 @@ h1 {
 } 
  
 #signin{ 
-	z-index:100;
+    z-index:100;
+    display: table;
 }
 #signup{ 
-	z-index:1;
+    z-index:1;
+    display: table;
 	opacity:0;
 	/* Rotating the sign up password form by default */
 	-moz-transform:rotateY(180deg);
