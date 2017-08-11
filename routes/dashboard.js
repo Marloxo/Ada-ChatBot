@@ -5,8 +5,17 @@ var router = express.Router();
 var multer = require('multer');
 var upload = multer({ dest: 'uploads/' });
 /* dashboard page. */
-router.get('/', function (req, res, next)
-{ res.render('Manage/dashboard', { style: 'dashboard', title: 'Dashboard - Ada ChatBot' }); });
+router.get('/', ensureAuthenticated, function (req, res, next)
+{
+	res.render('Manage/dashboard', { style: 'dashboard', title: 'Dashboard - Ada ChatBot' });
+});
+
+function ensureAuthenticated(req, res, next)
+{
+	if (req.isAuthenticated())
+		return next();
+	res.render('Account/login', { style: 'Login', title: 'LogIn - Ada ChatBot' });
+}
 
 /* */
 router.get('/settings', function (req, res, next)
@@ -59,30 +68,19 @@ router.post('/profile', upload.single('profileImage'), function (req, res, next)
 		}
 		else
 		{
-			// var newUser = new User({
-			// 	firstName: firstName,
-			// 	lastName: lastName,
-			// 	email: email,
-			// 	password: password,
-			// 	profileImage: profileImageName
-			// });
-
-			// //Create User
-			// User.createUser(newUser, function (err, user)
-			// {
-			// 	if (err)
-			// 		throw err;
-			// 	console.log(newUser);
-			// });
-
 			//Success Message
 			req.flash('success', 'Profile Updated');
 
-			// res.location('/');
-			// res.redirect('/');
 			res.render('/Manage/dashboard', { style: 'dashboard', title: 'Dashboard - Ada ChatBot' });
 		}
 	});
+});
+
+router.get('/logout', function (req, res)
+{
+	req.logout();
+	req.flash('success', 'You have logged out');
+	res.render('index', { style: 'Main', title: 'Home - Ada ChatBot' });
 });
 
 

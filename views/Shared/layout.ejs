@@ -11,6 +11,10 @@
 <%if (style == 'Main') { %>
  <% include ../Partials/header.ejs%>
 <% } %>    
+     <%/* Print out Flash messages */%>
+     <% if ( typeof messages != "undefined" ) { %>
+     <%- messages() %>
+     <% } %>    
 
   <%- body %>
 

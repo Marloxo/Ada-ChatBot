@@ -17,7 +17,7 @@
     "express-messages": "^1.0.1",
     "express-session": "^1.15.4",
     "express-validator": "^3.2.1",
-    "helmet": "^3.8.0",
+    "helmet": "^3.8.1",
     "mongodb": "^2.2.30",
     "mongoose": "^4.11.4",
     "morgan": "~1.8.1",
@@ -39,5 +39,8 @@
     "Ada"
   ],
   "author": "Omar AlSabek",
-  "license": "ISC"
+  "license": "ISC",
+  "engines": {
+    "node": "8.2.1"
+  }
 }

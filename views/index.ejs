@@ -10,9 +10,11 @@
             <img src="/img/logo.png" alt="Ada">
             <p>Ada</p>
           </a>
-
-            <a href="/login" class="btn btn-outline-primary offset-md-9">Sign In</a>
-
+          <% if (typeof user != "undefined") { %>
+           <a href="/dashboard/logout" class="btn btn-outline-secondary offset-md-9">Log out</a>
+          <% } else { %>    
+          <a href="/login" class="btn btn-outline-primary offset-md-9">Sign In</a>
+          <% } %>    
             <button class="header--cta cta">Get Started</button>
             <div class="header--nav-toggle">
               <span></span>

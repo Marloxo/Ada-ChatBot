@@ -5,10 +5,10 @@ var router = express.Router();
 var nodemailer = require('nodemailer');
 
 /* GET home page. */
-router.get('/', function (req, res, next)
-{ res.render('index', { style: 'Main', title: 'Home - Ada ChatBot' }); });
+router.get('/', function (req, res)
+{ res.render('index', { style: 'Main', title: 'Home - Ada ChatBot', user: req.user }); });
 
-router.post('/', function (req, res, next)
+router.post('/', function (req, res)
 {
 	var transporter = nodemailer.createTransport({
 		service: 'Gmail',
@@ -21,11 +21,11 @@ router.post('/', function (req, res, next)
 		subject: 'Submission From Ada Website - ' + req.body.name,
 
 		text: 'You have a new submission with the following details.. Name:' + req.body.name +
-				'Email:' + req.body.email + 'Message:' + req.body.message,
+		'Email:' + req.body.email + 'Message:' + req.body.message,
 
 		html: '<p>You have a new submission with the following details.. </p>' +
-				'<ul><li> Name: ' + req.body.name + '</li><li>Email: ' + req.body.email + '</li><li>Message: ' +
-				req.body.message + '</li></ul>'
+		'<ul><li> Name: ' + req.body.name + '</li><li>Email: ' + req.body.email + '</li><li>Message: ' +
+		req.body.message + '</li></ul>'
 	};
 
 	transporter.sendMail(mailOption, function (err, info)
